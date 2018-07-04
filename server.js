@@ -18,17 +18,18 @@ var port = process.env.port || 8080;
 
 /*** ROUTES ***/
 var router = express.Router();
+
 router.get('/', function(req, res) {
+  csv().fromFile(csvFile).then((jsonObj => {
+    res.json(jsonObj);
+  }))
+})
+
+router.get('/info', function(req, res) {
   res.json({
     message: 'Welcome to the API for UWEC segregated fees',
     documentation: 'https://github.com/UWEC-ITC/segregatedFees-API'
   });
-})
-
-router.get('/all', function(req, res) {
-  csv().fromFile(csvFile).then((jsonObj => {
-    res.json(jsonObj);
-  }))
 })
 
 router.get('/activities', function(req, res) {
@@ -37,7 +38,6 @@ router.get('/activities', function(req, res) {
     for (var i = 0; i < jsonObj.length; i++) {
       data.push(jsonObj[i].activity)
     }
-    res.status('200');
     res.json(data);
 
   }))
