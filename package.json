@@ -20,7 +20,7 @@
   },
   "scripts": {
     "start": "node server.js",
-    "test": "mocha --timeout 10000"
+    "test": "mocha --timeout 10000 --exit"
   },
   "repository": {
     "type": "git",
