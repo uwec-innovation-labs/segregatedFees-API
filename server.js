@@ -25,10 +25,35 @@ router.get('/', function(req, res) {
   });
 })
 
-router.get('/activities/all', function(req, res) {
+router.get('/all', function(req, res) {
   csv().fromFile(csvFile).then((jsonObj => {
     res.json(jsonObj);
   }))
+})
+
+router.get('/activities', function(req, res) {
+  csv().fromFile(csvFile).then((jsonObj => {
+    var data = [];
+    for (var i = 0; i < jsonObj.length; i++) {
+      data.push(jsonObj[i].activity)
+    }
+    res.status('200');
+    res.json(data);
+
+  }))
+})
+
+router.get('/activities/:activity', function(req, res) {
+  csv().fromFile(csvFile).then((jsonObj) => {
+    for (var i = 0; i < jsonObj.length; i++) {
+      if (jsonObj[i].activity.toLowerCase() == req.params.activity.toLowerCase()) {
+        res.status('200');
+        res.json(jsonObj[i]);
+      }
+    }
+    res.status('404');
+    res.json()
+  })
 })
 
 app.use('/v0', router);
