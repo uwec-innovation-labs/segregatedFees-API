@@ -28,6 +28,7 @@ router.get('/', function(req, res) {
 router.get('/info', function(req, res) {
   res.json({
     message: 'Welcome to the API for UWEC segregated fees',
+    version: 'v0',
     documentation: 'https://github.com/UWEC-ITC/segregatedFees-API'
   });
 })
@@ -38,6 +39,7 @@ router.get('/activities', function(req, res) {
     for (var i = 0; i < jsonObj.length; i++) {
       data.push(jsonObj[i].activity)
     }
+    res.status('200');
     res.json(data);
 
   }))
