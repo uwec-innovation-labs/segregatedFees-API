@@ -1,0 +1,33 @@
+{
+  "name": "segregatedfeeapi",
+  "version": "0.0.1",
+  "description": "Tool for getting the data for the UWEC segregated fees",
+  "author": "Alex Stout",
+  "main": "server.js",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "csv": "^3.1.0",
+    "csvtojson": "^2.0.4",
+    "express": "^4.16.3"
+  },
+  "devDependencies": {
+    "chai": "*",
+    "mocha": "*",
+    "nodemon": "^1.17.5"
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/UWEC-ITC/segregatedFees-API.git"
+  },
+  "keywords": [
+    "API"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/UWEC-ITC/segregatedFees-API/issues"
+  },
+  "homepage": "https://github.com/UWEC-ITC/segregatedFees-API#readme"
+}

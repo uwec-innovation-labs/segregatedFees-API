@@ -1,0 +1,39 @@
+var express = require('express');
+var app = express();
+var bodyParser = require('body-parser');
+var csv = require('csvtojson')
+
+// set the path to the data file
+const csvFile = 'data.csv'
+
+var data;
+
+function getData() {
+  csv()
+    .fromFile(csvFile)
+    .then((jsonObj) => {
+      data = jsonObj;
+    })
+}
+
+// configure express app to use bodyParser()
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
+// set the port to run the api on
+var port = process.env.port || 8080;
+
+/*** ROUTES ***/
+var router = express.Router();
+
+router.get('/', function(req, res) {
+  res.json({
+    message: 'Welcome to the API for UWEC segregated fees',
+    documentation: 'https://github.com/UWEC-ITC/segregatedFees-API'
+  });
+})
+
+app.use('/v0', router);
+
+app.listen(port);
+console.log('Magic is happening on port ' + port)
