@@ -4,7 +4,7 @@ var bodyParser = require('body-parser');
 var csv = require('csvtojson')
 var morgan = require('morgan')
 
-app.use(morgan('tiny'));
+//app.use(morgan('tiny'));
 
 // set the path to the data file
 const csvFile = 'data.csv'
@@ -54,7 +54,7 @@ router.get('/activities/:activity', function(req, res) {
       }
     }
     res.status('404');
-    res.json()
+    res.json({message: req.params.activity + " is not an activity"})
   })
 })
 
@@ -62,3 +62,5 @@ app.use('/v0', router);
 
 app.listen(port);
 console.log('Magic is happening on port ' + port)
+
+module.exports = app
