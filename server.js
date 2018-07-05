@@ -16,6 +16,12 @@ var port = process.env.port || 8080;
 /*** ROUTES ***/
 var router = express.Router();
 
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
 router.get('/', function(req, res) {
   csv().fromFile(csvFile).then((jsonObj => {
     res.setHeader('Content-Type', 'application/json');
@@ -27,7 +33,7 @@ router.get('/info', function(req, res) {
   res.setHeader('Content-Type', 'application/json');
   res.json({
     message: 'Welcome to the API for UWEC segregated fees',
-    version: 'v0',
+    version: 'v0.1',
     documentation: 'https://github.com/UWEC-ITC/segregatedFees-API'
   });
 })

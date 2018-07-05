@@ -76,3 +76,6 @@ This API can currently retrieve the following data from [coinmarketcap.com](http
     "activity": "Davies Student Center"
 }
 ```
+
+## Claudia Deploy
+`claudia update`
