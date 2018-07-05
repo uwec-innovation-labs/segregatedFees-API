@@ -1,0 +1,10 @@
+{
+  "lambda": {
+    "role": "segregatedfeeapi-executor",
+    "name": "segregatedfeeapi",
+    "region": "us-east-2"
+  },
+  "api": {
+    "id": "3b6gdit4v0"
+  }
+}

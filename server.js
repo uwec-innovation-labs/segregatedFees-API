@@ -2,9 +2,6 @@ var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
 var csv = require('csvtojson')
-var morgan = require('morgan')
-
-//app.use(morgan('tiny'));
 
 // set the path to the data file
 const csvFile = 'data.csv'
