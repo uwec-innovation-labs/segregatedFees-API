@@ -18,11 +18,13 @@ var router = express.Router();
 
 router.get('/', function(req, res) {
   csv().fromFile(csvFile).then((jsonObj => {
+    res.setHeader('Content-Type', 'application/json');
     res.json(jsonObj);
   }))
 })
 
 router.get('/info', function(req, res) {
+  res.setHeader('Content-Type', 'application/json');
   res.json({
     message: 'Welcome to the API for UWEC segregated fees',
     version: 'v0',
@@ -37,6 +39,7 @@ router.get('/activities', function(req, res) {
       data.push(jsonObj[i].activity)
     }
     res.status('200');
+    res.setHeader('Content-Type', 'application/json');
     res.json(data);
 
   }))
@@ -51,6 +54,7 @@ router.get('/activities/:activity', function(req, res) {
       }
     }
     res.status('404');
+    res.setHeader('Content-Type', 'application/json');
     res.json({message: req.params.activity + " is not an activity"})
   })
 })
