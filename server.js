@@ -65,7 +65,7 @@ router.get('/activities/:activity', function(req, res) {
   })
 })
 
-app.use('/v0', router);
+app.use('/', router);
 
 app.listen(port);
 console.log('Magic is happening on port ' + port)
