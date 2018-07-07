@@ -1,12 +1,12 @@
 describe("network response", function() {
     it('connects without error', function(done) {
-        request.get('/v0')
+        request.get('/')
             .end(function(err, res) {
                 done(err);
             });
     });
     it('returns status code of 200', function(done) {
-        request.get('/v0')
+        request.get('/')
             .expect(200)
             .end(function(err, res) {
                 done(err);
@@ -22,16 +22,16 @@ describe("network response", function() {
     });
 });
 
-// /v0/info endpoint
+// /info endpoint
 describe("info endpoint", function() {
     it('connects without error', function(done) {
-        request.get('/v0/info')
+        request.get('/info')
             .end(function(err, res) {
                 done(err);
             });
     });
     it('returns status code of 200', function(done) {
-        request.get('/v0/info')
+        request.get('/info')
             .expect(200)
             .end(function(err, res) {
                 done(err);
@@ -39,7 +39,7 @@ describe("info endpoint", function() {
     });
 
     it('has documentation link', function(done) {
-        request.get('/v0/info')
+        request.get('/info')
             .expect(200)
             .end(function(err, res) {
                 expect(res.body.documentation).to.equal('https://github.com/UWEC-ITC/segregatedFees-API')
